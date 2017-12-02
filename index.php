@@ -1,3 +1,3 @@
 <?php
-
-header('Location: '.ROOT_URL.'dashboard.php')
+	require './config.php';
+	header('Location: '.APP_URL.'dashboard.php');
