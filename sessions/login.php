@@ -29,9 +29,9 @@
 		}
 	}
 ?>
-<?php include PARTIALS.'topHTML.php' ?>
+<?php include INC.'topHTML.php' ?>
 	<div class="container">
-		<?php include PARTIALS.'errors.php'; ?>
+		<?php include INC.'errors.php'; ?>
 		<form action="./login.php" method="POST">
 			<div class="form-group">
 				<label for="username">Username</label>
@@ -44,4 +44,4 @@
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 	</div>
-<?php include PARTIALS.'bottomHTML.php' ?>
+<?php include INC.'bottomHTML.php' ?>

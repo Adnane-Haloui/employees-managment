@@ -2,7 +2,7 @@
   require 'vendor/Carbon.php';
   use Carbon\Carbon;
   $date = new Carbon($_SESSION['created_at']);
-  $date = $date->format('l jS \\of F Y');
+  $date = $date->format('jS \\of F Y');
 ?>
 
   <header class="main-header">
@@ -18,9 +18,6 @@
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
       </a>
 
       <div class="navbar-custom-menu">
@@ -36,23 +33,8 @@
               <li class="user-header">
                 <p>
                   <?php echo  $_SESSION['last_name'].' '.$_SESSION['first_name']." - ".$_SESSION['job']; ?>
-                  <small><?php echo $date; ?></small>
+                  <small>member since <?php echo $date; ?></small>
                 </p>
-              </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
