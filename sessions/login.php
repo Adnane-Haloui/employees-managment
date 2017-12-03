@@ -1,5 +1,5 @@
 <?php
-	require_once dirname(__DIR__).'/config.php';
+	require_once './../config.php';
 	require_once ROOT_URL."database/connect.php";
 	session_start();
 
@@ -9,10 +9,10 @@
 			$username = $db->real_escape_string(trim(mb_strtolower($_POST['username'])));
 			$pass = $db->real_escape_string(trim($_POST['pass']));
 			$result = $db->query("
-				SELECT e.id, first_name, last_name, job, e.created_at
-				FROM users as u, employees as e 
-				WHERE u.username = '{$username}' && u.password = '{$pass}' and u.id_employee = e.id;
-			");
+				SELECT e.id, first_name, last_name, j.title as job_title, j.type as job_type, e.created_at
+				FROM users as u, employees as e, jobs as j
+				WHERE u.username = '{$username}' && u.password = '{$pass}' and u.employee_id = e.id and e.job_id = j.id;
+			") or die($db->error);
 			if($result->num_rows != 0) {
 				$data = $result->fetch_array(MYSQLI_ASSOC);
 				foreach ($data as $key => $value) {
@@ -30,7 +30,7 @@
 	}
 ?>
 <?php include INC.'topHTML.php' ?>
-	<div class="container">
+	<div class="container" style="background:white;width:100vw;height:100vh;">
 		<?php include INC.'errors.php'; ?>
 		<form action="./login.php" method="POST">
 			<div class="form-group">
