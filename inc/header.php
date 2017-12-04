@@ -1,13 +1,14 @@
 <?php
-  require ROOT_URL.'vendor/Carbon.php';
+  require_once ROOT_URL.'vendor/Carbon.php';
   /*
    * Carbon zeto hna, bach n9edo n7ewlo date 3adia
    * l format m9roa,  b7al men hadi'dd.mm.yyyy hh:mm:ss' l hadi 1st of december, etc
    */
-  
+
   use Carbon\Carbon;
+  $date_format = 'jS \\of F Y';
   $date = new Carbon($_SESSION['created_at']);
-  $date = $date->format('jS \\of F Y');
+  $date = $date->format($date_format);
 ?>
 
   <header class="main-header">

@@ -1,13 +1,13 @@
 <?php
 	
-	//require_once ROOT_URL."database/connect.php";
-	require_once './../class/Database.php';
+	require_once "./../config.php";
+	require_once CLASSES.'Database.php';
 	
 	$db = new Database();
 	session_start();
 	if(isset($_POST['username']) && isset($_POST['pass'])) {
-		if(!empty($_POST['username']) && !empty($_POST['pass'])){
-
+		if(!empty($_POST['username']) && !empty($_POST['pass'])) {
+			
 			$result = $db->login($_POST['username'],$_POST['pass']);
 			if($result->num_rows != 0) {
 				$data = $result->fetch_array(MYSQLI_ASSOC);
@@ -24,8 +24,6 @@
 		} else {
 			$errors = array('All fields are required');
 		}
-		//$row = db->login($_POST['username'],$_POST['pass']);
-		
 	}	
 ?>
 <?php include INC.'topHTML.php' ?>

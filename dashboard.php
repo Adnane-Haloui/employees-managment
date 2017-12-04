@@ -8,11 +8,10 @@ require_once INC."header.php";
 require_once INC."aside.php";
 ?>
 	<div class="content-wrapper">
-		<section class="content-header">
+		<section class="content" style="height:100vh;display:flex;justify-content:center;align-items:center;">
 		 
 		  <h1>
-		    Welcom <?php echo $_SESSION['first_name'];?>
-		   
+		    Welcome <?php echo $_SESSION['first_name'];?>
 		  </h1>
 		</section>
 	</div>
