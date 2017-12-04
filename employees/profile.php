@@ -52,12 +52,15 @@
 			WHERE id = '{$service['department_id']}';
 		") or die($db->error);
 		$department = $result->fetch_array(MYSQLI_ASSOC);
-		$result = $db->query("
-			SELECT first_name, last_name, email
-			FROM employees
-			WHERE id = '{$department['manager_id']}';
-		") or die($db->error);
-		$department['manager'] = $result->fetch_array(MYSQLI_ASSOC);
+		if(!empty($department)) {
+			$result = $db->query("
+				SELECT first_name, last_name, email
+				FROM employees
+				WHERE id = '{$department['manager_id']}';
+			") or die($db->error);
+			$department['manager'] = $result->fetch_array(MYSQLI_ASSOC);
+		}
+		
 	}
 
 	
@@ -70,11 +73,12 @@
 		WHERE employee_id = '{$employee_id}';
 	") or die($db->error);
 	$careers = $result->fetch_array(MYSQLI_ASSOC);
-	// error ici
-	if(!empty($career)) {
-		$date = new Carbon($career['created_at']);
-		$date = $date->format($date_format);
-		$career['created_at'] = $date;
+	if(!empty($careers)) {
+		foreach($careers as $career) {
+			$date = new Carbon($career['created_at']);
+			$date = $date->format($date_format);
+			$career['created_at'] = $date;
+		}
 	}
 
 	// Degrees INFO
@@ -85,9 +89,11 @@
 	") or die($db->error);
 	$degrees = $result->fetch_array(MYSQLI_ASSOC);
 	if(!empty($degrees)) {
-		$date = new Carbon($degrees['created_at']);
-		$date = $date->format($date_format);
-		$degrees['created_at'] = $date;
+		foreach($degrees as $degree) {
+			$date = new Carbon($degree['created_at']);
+			$date = $date->format($date_format);
+			$degree['created_at'] = $date;
+		}
 	}
 
 	// Trainnings INFO
@@ -98,12 +104,14 @@
 	") or die($db->error);
 	$trainings = $result->fetch_array(MYSQLI_ASSOC);
 	if(!empty($trainings)) {
-		$date = new Carbon($trainings['started_at']);
-		$date = $date->format($date_format);
-		$trainings['started_at'] = $date;
-		$date = new Carbon($trainings['ended_at']);
-		$date = $date->format($date_format);
-		$trainings['ended_at'] = $date;
+		foreach($trainings as $training) {
+			$date = new Carbon($training['started_at']);
+			$date = $date->format($date_format);
+			$training['started_at'] = $date;
+			$date = new Carbon($training['ended_at']);
+			$date = $date->format($date_format);
+			$training['ended_at'] = $date;
+		}
 	}
 
 ?>
@@ -148,7 +156,7 @@
 					          </a>
 					        </h4>
 					      </div>
-					      <div id="collapseTwo" class="panel-collapse collapse in" aria-expanded="true" style="">
+					      <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="true" style="">
 					        <div class="box-body">
 					        	<table class="table table table-striped">
 					                <tbody>
@@ -170,7 +178,6 @@
 										  <td><?php echo $employee['phone_number'] ?></td>
 										  <td><?php echo $employee['created_at'] ?></td>
 						                </tr>
-						                <tr>
 					              	</tbody>
 					          	</table>
 					        </div>
@@ -184,7 +191,7 @@
 					          </a>
 					        </h4>
 					      </div>
-					      <div id="collapseTree" class="panel-collapse collapse in" aria-expanded="true" style="">
+					      <div id="collapseTree" class="panel-collapse collapse" aria-expanded="true" style="">
 					        <div class="box-body">
 					        	<table class="table table table-striped">
 					                <tbody>
@@ -198,7 +205,6 @@
 						                  <td><?php echo $service['name']; ?></td>
 						                  <td><?php echo $service['description']; ?></td>
 						                </tr>
-						                <tr>
 					              	</tbody>
 					          	</table>
 					          	<h5 style="margin: 30px 0 20px 0;padding: 0 0 0 20px">Service Manager: </h5>
@@ -213,6 +219,7 @@
 					        </div>
 					      </div>
 					    </div>
+					<?php if(!empty($careers)): ?>
 					    <div class="panel box box-solid">
 					      <div class="box-header with-border">
 					        <h4 class="box-title">
@@ -221,7 +228,7 @@
 					          </a>
 					        </h4>
 					      </div>
-					      <div id="collapseFour" class="panel-collapse collapse in" aria-expanded="true" style="">
+					      <div id="collapseFour" class="panel-collapse collapse" aria-expanded="true" style="">
 					        <div class="box-body">
 					        	<table class="table table table-striped">
 					                <tbody>
@@ -235,7 +242,6 @@
 						                  <td><?php echo $department['name']; ?></td>
 						                  <td><?php echo $department['description']; ?></td>
 						                </tr>
-						                <tr>
 					              	</tbody>
 					          	</table>
 					          	<h5 style="margin: 30px 0 20px 0;padding: 0 0 0 20px">Department Manager: </h5>
@@ -250,7 +256,8 @@
 					        </div>
 					      </div>
 					    </div>
-					<?php if(!empty($career)): ?>
+					<?php endif; ?>
+					<?php if(!empty($careers)): ?>
 					    <div class="panel box box-solid">
 					      <div class="box-header with-border">
 					        <h4 class="box-title">
@@ -259,7 +266,7 @@
 					          </a>
 					        </h4>
 					      </div>
-					      <div id="collapseFive" class="panel-collapse collapse in" aria-expanded="true" style="">
+					      <div id="collapseFive" class="panel-collapse collapse" aria-expanded="true" style="">
 					        <div class="box-body">
 					        	<table class="table table table-striped">
 					                <tbody>
@@ -269,13 +276,80 @@
 						                  <th>Description</th>
 						                  <th>created_at</th>
 						                </tr>
-						                <?php foreach($careers as ca)
+						                <?php foreach($careers as $career): ?>
+							                <tr>
+											  <td><?php echo $career['title'] ?></td>
+							                  <td><?php echo $career['description']; ?></td>
+							                  <td><?php echo $career['created_at']; ?></td>
+							                </tr>
+						            	<?php endforeach; ?>
+					              	</tbody>
+					          	</table>
+					        </div>
+					      </div>
+					    </div>
+					<?php endif; ?>
+
+					<?php if(!empty($degrees)): ?>
+					    <div class="panel box box-solid">
+					      <div class="box-header with-border">
+					        <h4 class="box-title">
+					          <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" class="">
+					            Career info
+					          </a>
+					        </h4>
+					      </div>
+					      <div id="collapseFive" class="panel-collapse collapse" aria-expanded="true" style="">
+					        <div class="box-body">
+					        	<table class="table table table-striped">
+					                <tbody>
 						                <tr>
-										  <td><?php echo $department['id'] ?></td>
-						                  <td><?php echo $department['name']; ?></td>
-						                  <td><?php echo $department['description']; ?></td>
+						                  <th style="width: 10px">ID</th>
+						                  <th>Title</th>
+						                  <th>Description</th>
+						                  <th>created_at</th>
 						                </tr>
+						                <?php foreach($degrees as $degree): ?>
+							                <tr>
+											  <td><?php echo $degree['title'] ?></td>
+							                  <td><?php echo $degree['description']; ?></td>
+							                  <td><?php echo $degree['created_at']; ?></td>
+							                </tr>
+						            	<?php endforeach; ?>
+					              	</tbody>
+					          	</table>
+					        </div>
+					      </div>
+					    </div>
+					<?php endif; ?>
+
+					<?php if(!empty($trainings)): ?>
+					    <div class="panel box box-solid">
+					      <div class="box-header with-border">
+					        <h4 class="box-title">
+					          <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" class="">
+					            Career info
+					          </a>
+					        </h4>
+					      </div>
+					      <div id="collapseFive" class="panel-collapse collapse" aria-expanded="true" style="">
+					        <div class="box-body">
+					        	<table class="table table table-striped">
+					                <tbody>
 						                <tr>
+						                  <th style="width: 10px">ID</th>
+						                  <th>Title</th>
+						                  <th>Description</th>
+						                  <th>created_at</th>
+						                </tr>
+						                <?php foreach($trainings as $training): ?>
+							                <tr>
+											  <td><?php echo $training['title'] ?></td>
+							                  <td><?php echo $training['description']; ?></td>
+							                  <td><?php echo $training['started_at']; ?></td>
+							                  <td><?php echo $training['ended_at']; ?></td>
+							                </tr>
+						            	<?php endforeach; ?>
 					              	</tbody>
 					          	</table>
 					        </div>

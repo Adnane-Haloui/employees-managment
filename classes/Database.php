@@ -31,6 +31,19 @@
 			else
 				return false;
 		}
+
+		function getServiceType($id) {
+			$query = "
+				SELECT s.type as service_type
+				FROM employees as e, services as s
+				WHERE e.id = '{$id}' and e.service_id = s.id;
+			";
+			$rslt = $this->con->query($query);
+			if(!empty($rslt))
+				return $rslt;
+			else
+				return false;
+		}
 	}
 ?>
 

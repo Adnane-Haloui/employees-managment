@@ -1,5 +1,4 @@
 <?php
-	
 	require_once "./../config.php";
 	require_once CLASSES.'Database.php';
 	
@@ -9,8 +8,11 @@
 		if(!empty($_POST['username']) && !empty($_POST['pass'])) {
 			
 			$result = $db->login($_POST['username'],$_POST['pass']);
-			if($result->num_rows != 0) {
+			if($result != false && $result->num_rows != 0) {
 				$data = $result->fetch_array(MYSQLI_ASSOC);
+				$service_type = $db->getServiceType($data['id']);
+				$service_type = $service_type->fetch_array(MYSQLI_NUM)[0];
+				$_SESSION['service_type'] = $service_type ? $service_type : 'null';
 				foreach ($data as $key => $value) {
 					echo $key;
 					$_SESSION[$key] = $value;
@@ -20,7 +22,6 @@
 				$errors = array('Your cridentials do not match our records');
 			}
 			$result->free();
-			$db->close();
 		} else {
 			$errors = array('All fields are required');
 		}

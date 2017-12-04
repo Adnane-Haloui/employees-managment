@@ -53,13 +53,20 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li>
             <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Current Missions</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Old Missions</a></li>
-            </li>
           </ul>
         </li>
-     
+        <?php 
+          if($_SESSION['job_type'] == 2 ) {
+            if($_SESSION['service_type'] == 'd')
+              include_once INC."aside/service_dev.php";
+            else if($_SESSION['service_type'] == 'rh')
+              include_once INC."aside/service_rh.php";
+          } else if($_SESSION['job_type'] == 3) {
+            include_once INC.'aside/department_dev.php';
+          }
+        ?>
       </ul>
 
 
