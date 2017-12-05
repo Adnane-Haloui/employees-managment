@@ -10,9 +10,10 @@
 			$result = $db->login($_POST['username'],$_POST['pass']);
 			if($result != false && $result->num_rows != 0) {
 				$data = $result->fetch_array(MYSQLI_ASSOC);
-				$service_type = $db->getServiceType($data['id']);
-				$service_type = $service_type->fetch_array(MYSQLI_NUM)[0];
-				$_SESSION['service_type'] = $service_type ? $service_type : 'null';
+				$service_info = $db->getServiceInfo($data['id']);
+				$service_info = $service_info->fetch_array(MYSQLI_NUM);
+				$_SESSION['service_type'] = $service_info[0] ? $service_info[0] : null;
+				$_SESSION['service_id'] = $service_info[1] ? $service_info[1] : null;
 				foreach ($data as $key => $value) {
 					echo $key;
 					$_SESSION[$key] = $value;

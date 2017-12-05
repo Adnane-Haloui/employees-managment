@@ -50,9 +50,9 @@
 				return false;
 		}
 
-		function getServiceType($id) {
+		function getServiceInfo($id) {
 			$query = "
-				SELECT s.type as service_type
+				SELECT s.type as service_type, s.id as service_id
 				FROM employees as e, services as s
 				WHERE e.id = '{$id}' and e.service_id = s.id;
 			";

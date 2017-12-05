@@ -38,7 +38,7 @@
         <li class="header">Career Track</li>
   
         <li class="treeview">
-          <a href="#">
+          <a href="<?php echo APP_URL.'employees/careers.php'; ?>">
             <i class="fa fa-line-chart"></i> <span>Career Evolution</span>
             <span class="pull-right-container">
             </span>
