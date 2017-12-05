@@ -21,7 +21,6 @@
 			} else {
 				$errors = array('Your cridentials do not match our records');
 			}
-			$result->free();
 		} else {
 			$errors = array('All fields are required');
 		}

@@ -16,16 +16,34 @@
 				header("Location: ".APP_URL."error.php?error_msg=".$this->con->connect_error);
 			}
 		}
+
+		function getHashedPassword($username) {
+			$query = "
+				SELECT password
+				FROM users
+				WHERE username = '{$username}';
+			";
+			$rslt = $this->con->query($query);
+			$rslt = $rslt->fetch_row()[0];
+			return $rslt;
+		}
+
 		function login ($username, $pass)
 		{
 			$username = $this->con->real_escape_string(trim(mb_strtolower($username)));
 			$pass = $this->con->real_escape_string(trim($pass));
+			$hashed_pass = $this->getHashedPassword($username);
+
+			if(!password_verify($pass, $hashed_pass)) {
+				return false;
+			}
 			$query = "
 				SELECT e.id, first_name, last_name, e.avatar, j.title as job_title, j.type as job_type, e.created_at
 				FROM users as u, employees as e, jobs as j
-				WHERE u.username = '{$username}' && u.password = '{$pass}' and u.employee_id = e.id and e.job_id = j.id;
+				WHERE u.username = '{$username}' and u.employee_id = e.id and e.job_id = j.id;
 			";
-			$rslt = $this->con->query($query);
+			$rslt = $this->con->query($query) or die($this->con->error);
+
 			if(!empty($rslt))
 			   return $rslt;
 			else
