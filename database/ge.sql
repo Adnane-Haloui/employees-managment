@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 05, 2017 at 04:14 AM
+-- Generation Time: Dec 05, 2017 at 04:45 AM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -107,10 +107,10 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`id`, `job_id`, `service_id`, `cin`, `first_name`, `last_name`, `email`, `address`, `phone_number`, `avatar`, `created_at`) VALUES
-(1, 1, 1, 'SH1', 'MA', 'H', 'hma_wd@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '0765489541', 'images/vendor/avatars/581311f4aca3dc3a30dd32ea9e7dea72.jpg', '2017-12-01 17:13:49'),
-(2, 2, NULL, 'SH2', 'S', 'U', 'su_dm@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '056598743', 'images/vendor/avatars/867sqfdqf896453.png', '2017-12-03 00:36:41'),
-(3, 3, 1, 'SH3', 'A', 'H', 'ha_sm@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '0356948128', 'images/vendor/avatars/486746533dsg.png', '2017-12-03 00:28:16'),
-(4, 3, 2, 'SH3998', 'DELL', 'HP', 'hp@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '0712387875', 'images/vendor/avatars/581311f4aca3dc3a30dd32ea9e7d.png', '2017-12-04 20:34:26'),
+(1, 1, 1, 'SH1', 'MA', 'H', 'hma_wd@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '0765489541', 'avatars/3408a08290e49d878686686efed80582.jpg', '2017-12-01 17:13:49'),
+(2, 2, NULL, 'SH2', 'S', 'U', 'su_dm@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '056598743', 'avatars/17896476f73907f7cd8b8f184ae15425.png', '2017-12-03 00:36:41'),
+(3, 3, 1, 'SH3', 'A', 'H', 'ha_sm@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '0356948128', 'avatars/2b3d5a929bc374d43ae8a6c8f77b5048.png', '2017-12-03 00:28:16'),
+(4, 3, 2, 'SH3998', 'DELL', 'HP', 'hp@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '0712387875', 'avatars/ad48687a0e72f20217b6508ef2d3b42e.png', '2017-12-04 20:34:26'),
 (6, 1, 1, 'AUTE INVENTORE MAIORES QUOS ODIO BEATAE AUTEM AUT PROIDENT VOLUPTATEM QUASI', 'Emma', 'KNIGHT', 'lucozokaf@yahoo.com', 'DOLOR QUAERAT ALIQUAM NISI EST PERFERENDIS VOLUPTATUM BLANDITIIS NOBIS NULLA NON ANIMI', '+617-36-3719039', 'avatars/5a2608f3727d8.png', '2017-12-05 03:02:32');
 
 -- --------------------------------------------------------
