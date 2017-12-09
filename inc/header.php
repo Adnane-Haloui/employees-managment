@@ -1,16 +1,3 @@
-<?php
-  require_once ROOT_URL.'vendor/Carbon.php';
-  /*
-   * Carbon zeto hna, bach n9edo n7ewlo date 3adia
-   * l format m9roa,  b7al men hadi'dd.mm.yyyy hh:mm:ss' l hadi 1st of december, etc
-   */
-
-  use Carbon\Carbon;
-  $date_format = 'jS \\of F Y';
-  $date = new Carbon($_SESSION['created_at']);
-  $date = $date->format($date_format);
-?>
-
   <header class="main-header">
     <!-- Logo -->
     <a href="<?php echo APP_URL; ?>" class="logo">
@@ -39,7 +26,7 @@
               <li class="user-header">
                 <p>
                   <?php echo  $_SESSION['last_name'].' '.$_SESSION['first_name']." - ".$_SESSION['job_title']; ?>
-                  <small>member since <?php echo $date; ?></small>
+                  <small>member since <?php echo $_SESSION['created_at']; ?></small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -48,7 +35,9 @@
                   <a href="<?php echo APP_URL.'employees/profile.php'; ?>" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?php echo APP_URL.'sessions/logout.php'; ?>" class="btn btn-default btn-flat">Log out</a>
+                  <form action="<?php echo APP_URL.'sessions/logout.php'; ?>" method="POST">
+                    <button class="btn btn-default btn-flat" name="logout">Log out</button>
+                  </form>
                 </div>
               </li>
             </ul>

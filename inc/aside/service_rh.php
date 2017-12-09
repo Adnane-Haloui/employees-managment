@@ -7,35 +7,35 @@
 	  </a>
 	</li>
 	<li class="treeview">
-	  <a href="Archive_Employees.html">
+	  <a href="#">
 	    <i class="fa fa-file-archive-o"></i> <span>Archive Employee</span>
 	    <span class="pull-right-container">
 	    </span>
 	  </a>
 	</li>
 	<li class="treeview">
-	  <a href="Affect_new_Employees.html">
+	  <a href="#">
 	    <i class="fa fa-rocket"></i> <span>Affect Employee</span>
 	    <span class="pull-right-container">
 	    </span>
 	  </a>
 	</li>
 	<li class="treeview">
-	  <a href="chef_HR_Consult_Employes.html">
+	  <a href="#">
 	    <i class="fa fa-eye"></i> <span>Consult Employees</span>
 	    <span class="pull-right-container">
 	    </span>
 	  </a>
 	</li>
 	<li class="treeview">
-	  <a href="Consulter_Missions.html">
+	  <a href="#">
 	  <i class="fa fa-bullseye"></i> <span>Consult Missions</span>
 	    <span class="pull-right-container">
 	    </span>
 	  </a>
 	</li>
 	<li class="treeview">
-	  <a href="Consulter_Absence.html">
+	  <a href="#">
 	    <i class="fa fa-user-times"></i> <span>Consult Absence</span>
 	    <span class="pull-right-container">
 	    </span>

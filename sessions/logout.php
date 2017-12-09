@@ -1,5 +1,7 @@
 <?php
+	require_once './../config.php';
+	require CLASSES.'DB.php';
+	require CLASSES.'Session.php';
 
-session_start();
-session_destroy();
-header('Location: ./login.php');
+	if(isset($_POST['logout']))
+		Session::logout();

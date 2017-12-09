@@ -1,27 +1,14 @@
 <?php
 	require_once "./../config.php";
-	require_once CLASSES.'Database.php';
+	require_once CLASSES.'DB.php';
+	require_once CLASSES.'Session.php';
 	
-	$db = new Database();
-	session_start();
 	if(isset($_POST['username']) && isset($_POST['pass'])) {
 		if(!empty($_POST['username']) && !empty($_POST['pass'])) {
-			
-			$result = $db->login($_POST['username'],$_POST['pass']);
-			if($result != false && $result->num_rows != 0) {
-				$data = $result->fetch_array(MYSQLI_ASSOC);
-				$service_info = $db->getServiceInfo($data['id']);
-				$service_info = $service_info->fetch_array(MYSQLI_NUM);
-				$_SESSION['service_type'] = $service_info[0] ? $service_info[0] : null;
-				$_SESSION['service_id'] = $service_info[1] ? $service_info[1] : null;
-				foreach ($data as $key => $value) {
-					echo $key;
-					$_SESSION[$key] = $value;
-				}
-				header('Location: '.APP_URL.'dashboard.php');
-			} else {
+			$session = new Session();
+			$isOK = $session->login($_POST['username'], $_POST['pass']);
+			if(!$isOK)
 				$errors = array('Your cridentials do not match our records');
-			}
 		} else {
 			$errors = array('All fields are required');
 		}
