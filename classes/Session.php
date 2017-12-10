@@ -65,7 +65,7 @@
 				$data['service_id'] = $service_info['service_id'] ? $service_info['service_id'] : null;
 				$data['service_type'] = $service_info['service_type'] ? $service_info['service_type'] : null;
 			}
-
+			
 			session_start();
 			foreach($data as $key => $value) {
 				$_SESSION[$key] = $value;

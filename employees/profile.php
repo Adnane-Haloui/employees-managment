@@ -3,7 +3,6 @@
 	require CLASSES."DB.php";
 	require CLASSES."Session.php";
 	Session::setUp();
-
 	require_once INC."topHTML.php";
 	require_once INC."header.php";
 	require_once INC."aside.php";
@@ -42,7 +41,7 @@
 	        <div class="col-md-12"> 
 				<div class="box box-solid">
 					<div class="box-header with-border">
-				  		<img src="<?php echo APP_URL.$_SESSION['avatar']; ?>" class="img-circle center-block" alt="User Image">
+				  		<img src="<?php echo APP_URL.$_SESSION['avatar']; ?>" class="avatar img-circle center-block" alt="User Image">
 					</div>
 					<div class="box-body">
 					  <div class="box-group" id="accordion">

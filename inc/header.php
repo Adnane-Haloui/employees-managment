@@ -1,3 +1,10 @@
+<style>
+  .avatar {
+    max-width: 215px;
+    max-height: 215px
+  }
+</style>
+
   <header class="main-header">
     <!-- Logo -->
     <a href="<?php echo APP_URL; ?>" class="logo">

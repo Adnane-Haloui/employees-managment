@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 05, 2017 at 04:45 AM
+-- Generation Time: Dec 10, 2017 at 09:53 PM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -47,6 +47,15 @@ CREATE TABLE `careers` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `careers`
+--
+
+INSERT INTO `careers` (`id`, `employee_id`, `title`, `description`, `created_at`) VALUES
+(1, 2, 'Software Ingineer', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam atque necessitatibus, deleniti adipisci qui facere, expedita at et non iure dignissimos perferendis voluptate harum dolorem incidunt quasi officiis! Veniam, tempora.', '2017-12-08 17:26:41'),
+(2, 2, 'Data analysist', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam atque necessitatibus, deleniti adipisci qui facere, expedita at et non iure dignissimos perferendis voluptate harum dolorem incidunt quasi officiis! Veniam, tempora.', '2017-12-08 17:28:16'),
+(3, 1, 'WEB DEVELOPER', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat non at sit maiores consequuntur error pariatur, animi repudiandae, laudantium dolore ratione enim iure? Labore facilis aspernatur reprehenderit rem, incidunt maxime!', '2017-12-08 21:04:55');
+
 -- --------------------------------------------------------
 
 --
@@ -60,6 +69,13 @@ CREATE TABLE `degrees` (
   `employee_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `degrees`
+--
+
+INSERT INTO `degrees` (`id`, `title`, `description`, `employee_id`, `created_at`) VALUES
+(1, 'DEVMOUTAIN WEB DEVELOPMENT BOOTCAMP', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore eum cumque assumenda et dolorem, ullam voluptatem sint accusantium consectetur suscipit quas, vel minus numquam odio perspiciatis esse culpa ad, rem.', 1, '2017-12-09 16:38:35');
 
 -- --------------------------------------------------------
 
@@ -110,8 +126,7 @@ INSERT INTO `employees` (`id`, `job_id`, `service_id`, `cin`, `first_name`, `las
 (1, 1, 1, 'SH1', 'MA', 'H', 'hma_wd@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '0765489541', 'avatars/3408a08290e49d878686686efed80582.jpg', '2017-12-01 17:13:49'),
 (2, 2, NULL, 'SH2', 'S', 'U', 'su_dm@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '056598743', 'avatars/17896476f73907f7cd8b8f184ae15425.png', '2017-12-03 00:36:41'),
 (3, 3, 1, 'SH3', 'A', 'H', 'ha_sm@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '0356948128', 'avatars/2b3d5a929bc374d43ae8a6c8f77b5048.png', '2017-12-03 00:28:16'),
-(4, 3, 2, 'SH3998', 'DELL', 'HP', 'hp@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '0712387875', 'avatars/ad48687a0e72f20217b6508ef2d3b42e.png', '2017-12-04 20:34:26'),
-(6, 1, 1, 'AUTE INVENTORE MAIORES QUOS ODIO BEATAE AUTEM AUT PROIDENT VOLUPTATEM QUASI', 'Emma', 'KNIGHT', 'lucozokaf@yahoo.com', 'DOLOR QUAERAT ALIQUAM NISI EST PERFERENDIS VOLUPTATUM BLANDITIIS NOBIS NULLA NON ANIMI', '+617-36-3719039', 'avatars/5a2608f3727d8.png', '2017-12-05 03:02:32');
+(4, 3, 2, 'SH3998', 'DELL', 'HP', 'hp@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '0712387875', 'avatars/ad48687a0e72f20217b6508ef2d3b42e.png', '2017-12-04 20:34:26');
 
 -- --------------------------------------------------------
 
@@ -174,6 +189,13 @@ CREATE TABLE `trainings` (
   `ended_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `trainings`
+--
+
+INSERT INTO `trainings` (`id`, `employee_id`, `title`, `description`, `started_at`, `ended_at`) VALUES
+(1, 1, 'CODINGDOJO Training', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore eum cumque assumenda et dolorem, ullam voluptatem sint accusantium consectetur suscipit quas, vel minus numquam odio perspiciatis esse culpa ad, rem.', '2017-12-09', '2017-12-09');
+
 -- --------------------------------------------------------
 
 --
@@ -196,8 +218,7 @@ INSERT INTO `users` (`id`, `employee_id`, `username`, `password`, `created_at`) 
 (2, 1, 'hma_wd', '$2y$10$XV8C9dOFJTGdXvI0h5VXvexDxLHCbP1Ap6e2hcR9eCvyi3IbXEJIG', '2017-12-03 23:33:57'),
 (3, 2, 'su_dm', '$2y$10$XV8C9dOFJTGdXvI0h5VXvexDxLHCbP1Ap6e2hcR9eCvyi3IbXEJIG', '2017-12-03 23:33:57'),
 (4, 3, 'ha_sm', '$2y$10$XV8C9dOFJTGdXvI0h5VXvexDxLHCbP1Ap6e2hcR9eCvyi3IbXEJIG', '2017-12-03 23:33:57'),
-(5, 4, 'rh_sm', '$2y$10$XV8C9dOFJTGdXvI0h5VXvexDxLHCbP1Ap6e2hcR9eCvyi3IbXEJIG', '2017-12-04 20:36:11'),
-(12, 6, 'salim', '$2y$10$obf6hqEn5fbfLTRiSQnXgenOPcAq7MlR1rH9S1H5YNh0vwVN6S6qu', '2017-12-05 03:02:33');
+(5, 4, 'rh_sm', '$2y$10$XV8C9dOFJTGdXvI0h5VXvexDxLHCbP1Ap6e2hcR9eCvyi3IbXEJIG', '2017-12-04 20:36:11');
 
 --
 -- Indexes for dumped tables
@@ -275,12 +296,12 @@ ALTER TABLE `avatars`
 -- AUTO_INCREMENT for table `careers`
 --
 ALTER TABLE `careers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `degrees`
 --
 ALTER TABLE `degrees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `departments`
 --
@@ -290,7 +311,7 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `jobs`
 --
@@ -305,12 +326,12 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `trainings`
 --
 ALTER TABLE `trainings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

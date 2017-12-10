@@ -7,24 +7,42 @@
 		private $id;
 		private $date_format = 'jS \\of F Y';
 
-		public function __construct($id) {
+		public function __construct($id = null) {
 			parent::__construct();
 			$this->id = $id;
 		}
 
-		public function managerControlAccess() {
+		public function store(array $employeeArgs, array $userArgs) {
 			$query = "
-			    SELECT type as job_type
-			    FROM jobs as j, employees as e
-			    WHERE e.id = ? and e.job_id = j.id;
-		    ";
-			$data = $this->fetch($query, [
-			    [
-			      "value" => $this->id,
-			      "type" => PDO::PARAM_INT
-		    	]
-		  	]);
-			if($data['job_type'] != 3 and $data['job_type'] != 2)
+				INSERT INTO `employees`(`id`, `job_id`, `service_id`, `cin`, `first_name`, `last_name`, `email`, `address`, `phone_number`, `avatar`)
+				VALUES (?, 	?,	?,	?,	?,	?,	?,	?,	?,	?);
+			";
+			if(!$this->execute($query, $employeeArgs)) return false;
+
+			$query = "
+				INSERT INTO `users`(`employee_id`, `username`, `password`)
+				VALUES (?, ?, ?);
+			";
+			if(!$this->execute($query, $userArgs)) return false;
+
+			return true;
+		}
+
+		public function storeUser($query, array $args) {
+			$query = "
+				INSERT INTO `users`(`employee_id`, `username`, `password`)
+				VALUES (?, ?, ?);
+			";
+			return $this->execute($query, $args);
+		}
+		
+		public static function RHControllAccess() {
+			if(!isset($_SESSION['service_type']) || $_SESSION['service_type'] != 'rh')
+				header('Location: '.APP_URL);
+		}
+
+		public static function managerControlAccess() {
+			if($_SESSION['job_type'] != 3 and $_SESSION['job_type'] != 2)
 				header('Location: '.APP_URL);
 		}
 

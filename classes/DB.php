@@ -12,26 +12,34 @@ class DB {
     ];
     $this->c = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASS, $options);
   }
+
+  public function execute($query, $args) {
+    $stmt = $this->c->prepare($query);
+    foreach($args as $key => $arg) {
+        $stmt->bindValue(($key+1), $arg['value'], isset($arg['type']) ? $arg['type'] : PDO::PARAM_STR);
+    }
+    return $stmt->execute();
+  }
   
   public function fetch($query, $args) {
-      $stmt = $this->c->prepare($query);
-      foreach($args as $key => $arg) {
-          $stmt->bindValue(($key+1), $arg['value'], $arg['type']);
-      }
-      if(!$stmt->execute()) return false;
-      $data = $stmt->fetch(PDO::FETCH_ASSOC);
-      if ($stmt->rowCount() == 0) return false;
-      return $data;
+    $stmt = $this->c->prepare($query);
+    foreach($args as $key => $arg) {
+        $stmt->bindValue(($key+1), $arg['value'], $arg['type']);
+    }
+    if(!$stmt->execute()) return false;
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($stmt->rowCount() == 0) return false;
+    return $data;
   }
   public function fetchAll($query, $args) {
-      $stmt = $this->c->prepare($query);
-      foreach($args as $key => $arg) {
-          $stmt->bindValue(($key+1), $arg['value'], $arg['type']);
-      }
-      if(!$stmt->execute()) return false;
-      $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-      if ($stmt->rowCount() == 0) return false;
-      return $data;
+    $stmt = $this->c->prepare($query);
+    foreach($args as $key => $arg) {
+        $stmt->bindValue(($key+1), $arg['value'], $arg['type']);
+    }
+    if(!$stmt->execute()) return false;
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if ($stmt->rowCount() == 0) return false;
+    return $data;
   }
 
 

@@ -4,8 +4,8 @@
   require CLASSES."Session.php";
   Session::setUp();
   require CLASSES."Employee.php";
+  Employee::managerControlAccess();
   $employee = new Employee($_SESSION['id']);
-  $employee->managerControlAccess();
   $descandantEmployeesInfo = $employee->getDescandentEmployees();
   require_once INC."topHTML.php";
   require_once INC."header.php";
@@ -59,7 +59,7 @@
           <div class="modal-body box-group" id="accordion">
             <div class="box box-solid panel">
               <div class="modal-header">
-                <img src="<?php echo APP_URL.$value['avatar']; ?>" class="img-circle center-block" alt="User Image">
+                <img src="<?php echo APP_URL.$value['avatar']; ?>" class="avatar img-circle center-block" alt="User Image">
               </div>
             </div>
           <?php if($careerInfo = $employee->getCareerInfo($value['id'])): ?>
