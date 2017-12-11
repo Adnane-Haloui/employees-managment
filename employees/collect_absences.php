@@ -1,10 +1,11 @@
 <?php
-	require_once "./../config.php";
-	require_once ROOT_URL."database/connect.php";
-	require_once SESSIONS."setUp.php";
-	require_once INC."topHTML.php";
-	require_once INC."header.php";
-	require_once INC."aside.php";
+  require_once "./../config.php";
+  require CLASSES."DB.php";
+  require CLASSES."Session.php";
+  Session::setUp();
+  require_once INC."topHTML.php";
+  require_once INC."header.php";
+  require_once INC."aside.php";
 
 ?>
 <div class="content-wrapper" style="min-height: 921px;">

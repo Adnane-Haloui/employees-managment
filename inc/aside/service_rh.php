@@ -35,8 +35,8 @@
 	  </a>
 	</li>
 	<li class="treeview">
-	  <a href="#">
-	    <i class="fa fa-user-times"></i> <span>Consult Absence</span>
+	  <a href="<?php echo APP_URL.'employees/consult_attendances.php'; ?>">
+	    <i class="fa fa-user-times"></i> <span>Consult Attendances</span>
 	    <span class="pull-right-container">
 	    </span>
 	  </a>

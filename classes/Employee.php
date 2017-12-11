@@ -12,6 +12,51 @@
 			$this->id = $id;
 		}
 
+		public function getAttendancesList() {
+			if(isset($_SESSION['service_id']) && !empty($_SESSION['service_id'])) {
+				$query = "
+					SELECT cin, a.created_at
+					FROM employees as e, attendances as a
+					WHERE e.service_id = ? and a.employee_id = e.id;
+				";
+				$data = $this->fetchAll($query, [
+					[
+				      'value' => $_SESSION['service_id'],
+				      'type' => PDO::PARAM_INT
+				    ]
+				]);
+			} else {
+				$query = "
+					SELECT cin, a.created_at
+					FROM employees as e, attendances as a
+					WHERE a.employee_id = e.id;
+				";
+				$data = $this->fetch($query, []);
+			}
+			if(!$data) return false;
+			foreach ($data as $key => $value) {
+				$date = new Carbon($value['created_at']);
+				$data[$key]['created_at'] = $date->format($this->date_format);
+			}
+			return $data;
+		}
+
+
+		public function isPresent() {
+			$query = "
+				INSERT INTO `attendances`(`employee_id`)
+				VALUES (?);
+			";
+			$args = [
+				[
+					'value' => $this->id,
+					'type' => PDO::PARAM_INT
+				]
+			];
+			if(!$this->execute($query, $args)) return false;
+			return true;
+		}
+
 		public function store(array $employeeArgs, array $userArgs) {
 			$query = "
 				INSERT INTO `employees`(`id`, `job_id`, `service_id`, `cin`, `first_name`, `last_name`, `email`, `address`, `phone_number`, `avatar`)
