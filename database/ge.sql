@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 10, 2017 at 09:53 PM
+-- Generation Time: Dec 11, 2017 at 10:22 PM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -19,6 +19,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `ge`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `absences`
+--
+
+CREATE TABLE `absences` (
+  `id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -126,7 +138,8 @@ INSERT INTO `employees` (`id`, `job_id`, `service_id`, `cin`, `first_name`, `las
 (1, 1, 1, 'SH1', 'MA', 'H', 'hma_wd@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '0765489541', 'avatars/3408a08290e49d878686686efed80582.jpg', '2017-12-01 17:13:49'),
 (2, 2, NULL, 'SH2', 'S', 'U', 'su_dm@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '056598743', 'avatars/17896476f73907f7cd8b8f184ae15425.png', '2017-12-03 00:36:41'),
 (3, 3, 1, 'SH3', 'A', 'H', 'ha_sm@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '0356948128', 'avatars/2b3d5a929bc374d43ae8a6c8f77b5048.png', '2017-12-03 00:28:16'),
-(4, 3, 2, 'SH3998', 'DELL', 'HP', 'hp@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '0712387875', 'avatars/ad48687a0e72f20217b6508ef2d3b42e.png', '2017-12-04 20:34:26');
+(4, 3, 2, 'SH3998', 'DELL', 'HP', 'hp@gmail.com', 'QUARTER JOHN STREET DOE NO 07 NYC', '0712387875', 'avatars/ad48687a0e72f20217b6508ef2d3b42e.png', '2017-12-04 20:34:26'),
+(5, 1, 1, 'MQSJDF35463512', 'Bruce', 'CUNNINGHAM', 'fosacaqeso@gmail.com', 'POSSIMUS EST ODIT DEBITIS QUIBUSDAM INVENTORE AUTE CUMQUE EXPEDITA UT QUIDEM', '+866-70-6285047', 'avatars/5a2e6d57dd7cb.png', '2017-12-11 11:34:47');
 
 -- --------------------------------------------------------
 
@@ -218,11 +231,18 @@ INSERT INTO `users` (`id`, `employee_id`, `username`, `password`, `created_at`) 
 (2, 1, 'hma_wd', '$2y$10$XV8C9dOFJTGdXvI0h5VXvexDxLHCbP1Ap6e2hcR9eCvyi3IbXEJIG', '2017-12-03 23:33:57'),
 (3, 2, 'su_dm', '$2y$10$XV8C9dOFJTGdXvI0h5VXvexDxLHCbP1Ap6e2hcR9eCvyi3IbXEJIG', '2017-12-03 23:33:57'),
 (4, 3, 'ha_sm', '$2y$10$XV8C9dOFJTGdXvI0h5VXvexDxLHCbP1Ap6e2hcR9eCvyi3IbXEJIG', '2017-12-03 23:33:57'),
-(5, 4, 'rh_sm', '$2y$10$XV8C9dOFJTGdXvI0h5VXvexDxLHCbP1Ap6e2hcR9eCvyi3IbXEJIG', '2017-12-04 20:36:11');
+(5, 4, 'rh_sm', '$2y$10$XV8C9dOFJTGdXvI0h5VXvexDxLHCbP1Ap6e2hcR9eCvyi3IbXEJIG', '2017-12-04 20:36:11'),
+(6, 5, 'isco', '$2y$10$q41T744GRIAJnjbskgC.DughjrGa1KJNcCwwfnoNc/ivmaQsjFWsW', '2017-12-11 11:34:47');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `absences`
+--
+ALTER TABLE `absences`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `avatars`
@@ -288,6 +308,11 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `absences`
+--
+ALTER TABLE `absences`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `avatars`
 --
 ALTER TABLE `avatars`
@@ -311,7 +336,7 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `jobs`
 --
@@ -331,7 +356,7 @@ ALTER TABLE `trainings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

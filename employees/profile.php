@@ -228,12 +228,12 @@
 					    <div class="panel box box-solid">
 					      <div class="box-header with-border">
 					        <h4 class="box-title">
-					          <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" class="">
+					          <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" class="">
 					            Degrees info
 					          </a>
 					        </h4>
 					      </div>
-					      <div id="collapseFive" class="panel-collapse collapse" aria-expanded="true" style="">
+					      <div id="collapseSix" class="panel-collapse collapse" aria-expanded="true" style="">
 					        <div class="box-body">
 					        	<table class="table table table-striped">
 					                <tbody>
@@ -261,12 +261,12 @@
 					    <div class="panel box box-solid">
 					      <div class="box-header with-border">
 					        <h4 class="box-title">
-					          <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" class="">
+					          <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="true" class="">
 					            Trainings info
 					          </a>
 					        </h4>
 					      </div>
-					      <div id="collapseFive" class="panel-collapse collapse" aria-expanded="true" style="">
+					      <div id="collapseSeven" class="panel-collapse collapse" aria-expanded="true" style="">
 					        <div class="box-body">
 					        	<table class="table table table-striped">
 					                <tbody>
@@ -277,7 +277,7 @@
 						                  <th>started_at</th>
 						                  <th>ended_at</th>
 						                </tr>
-						                <?php foreach($trainings as $training): ?>
+						                <?php foreach($trainingsInfo as $training): ?>
 							                <tr>
 											  <td><?php echo $training['title'] ?></td>
 							                  <td><?php echo $training['description']; ?></td>
