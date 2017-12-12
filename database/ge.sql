@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 11, 2017 at 10:22 PM
+-- Generation Time: Dec 12, 2017 at 06:09 AM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -23,14 +23,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `absences`
+-- Table structure for table `attendances`
 --
 
-CREATE TABLE `absences` (
+CREATE TABLE `attendances` (
   `id` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `attendances`
+--
+
+INSERT INTO `attendances` (`id`, `employee_id`, `created_at`) VALUES
+(7, 4, '2017-12-11 22:45:35'),
+(9, 1, '2017-12-11 23:02:40'),
+(10, 3, '2017-12-11 23:14:38'),
+(11, 3, '2017-12-11 23:37:08');
 
 -- --------------------------------------------------------
 
@@ -167,6 +177,31 @@ INSERT INTO `jobs` (`id`, `type`, `title`, `description`, `salary`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `missions`
+--
+
+CREATE TABLE `missions` (
+  `id` int(11) NOT NULL,
+  `service_id` int(11) NOT NULL,
+  `employee_id` int(11) DEFAULT NULL,
+  `manager_id` int(11) NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `description` text CHARACTER SET utf8 NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `missions`
+--
+
+INSERT INTO `missions` (`id`, `service_id`, `employee_id`, `manager_id`, `title`, `description`, `created_at`) VALUES
+(7, 1, 1, 2, 'DO THE DISHES', 'LOREM', '2017-12-12 04:44:38'),
+(10, 1, 1, 2, 'GO TO THE GYM', 'lorem', '2017-12-12 05:06:28'),
+(11, 1, 3, 2, 'GO TO THE GYM', 'lorem', '2017-12-12 05:06:28');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `services`
 --
 
@@ -239,9 +274,9 @@ INSERT INTO `users` (`id`, `employee_id`, `username`, `password`, `created_at`) 
 --
 
 --
--- Indexes for table `absences`
+-- Indexes for table `attendances`
 --
-ALTER TABLE `absences`
+ALTER TABLE `attendances`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -284,6 +319,12 @@ ALTER TABLE `jobs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `missions`
+--
+ALTER TABLE `missions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `services`
 --
 ALTER TABLE `services`
@@ -308,10 +349,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `absences`
+-- AUTO_INCREMENT for table `attendances`
 --
-ALTER TABLE `absences`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `attendances`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `avatars`
 --
@@ -342,6 +383,11 @@ ALTER TABLE `employees`
 --
 ALTER TABLE `jobs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `missions`
+--
+ALTER TABLE `missions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `services`
 --

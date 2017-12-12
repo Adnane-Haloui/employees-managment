@@ -46,11 +46,8 @@
         </li>
 
         <li class="treeview">
-          <a href="#">
+          <a href="<?php echo APP_URL.'employees/missions.php'; ?>">
             <i class="fa fa-user-secret"></i> <span>Missions</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Current Missions</a></li>

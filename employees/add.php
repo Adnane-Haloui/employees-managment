@@ -283,7 +283,7 @@
 		                  <label>Password</label>
 		                  <input class="form-control" name="password" type="password">
 		                </div>
-						<button type="submit" name="submited" class="btn btn-primary">Ajouter</button>
+						<button type="submit" name="submited" class="btn btn-primary">Add</button>
 		              </form>
 		            </div>
 		            <!-- /.box-body -->

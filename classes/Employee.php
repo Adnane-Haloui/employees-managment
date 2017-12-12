@@ -86,6 +86,18 @@
 				header('Location: '.APP_URL);
 		}
 
+
+		public static function DMControllAccess() {
+			if($_SESSION['job_type'] != 3)
+				header('Location: '.APP_URL);
+		}
+
+
+		public static function serviceControlAccess() {
+			if($_SESSION['job_type'] != 2)
+				header('Location: '.APP_URL);
+		}
+		
 		public static function managerControlAccess() {
 			if($_SESSION['job_type'] != 3 and $_SESSION['job_type'] != 2)
 				header('Location: '.APP_URL);

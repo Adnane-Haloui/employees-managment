@@ -9,7 +9,7 @@
     </a>
   </li>
   <li class="treeview">
-    <a href="<?php echo APP_URL."employees/aff_mi.php";?>">
+    <a href="<?php echo APP_URL."employees/affect_mission.php";?>">
       <i class="fa fa-rocket"></i> <span>Affect Missions</span>
       <span class="pull-right-container">
       </span>

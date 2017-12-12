@@ -13,12 +13,6 @@
 	    </span>
 	  </a>
 	</li>
-	<li class="treeview">
-	  <a href="#">
-	    <i class="fa fa-rocket"></i> <span>Affect Employee</span>
-	    <span class="pull-right-container">
-	    </span>
-	  </a>
 	</li>
 	<li class="treeview">
 	  <a href="#">
